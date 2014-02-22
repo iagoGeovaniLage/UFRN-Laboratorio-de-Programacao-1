@@ -27,9 +27,12 @@ int  main() {
 
 	std::cout << "Digite um número para conversão: ";
 	std::cin >> *n; // leitura do número para conversão
-
-	std::cout << *n << " na base 2 é: ";
-	std::cout << converteBinario(*n, 0); // chamada da função de conversão
+	if(*n >= 0) {
+		std::cout << *n << " na base 2 é: ";
+		std::cout << converteBinario(*n, 0); // chamada da função de conversão
+	} else {
+		std::cout << "O número tem que ser positivo";
+	}
 	std::cout << "\n"; // pula linha
 
 	delete n; // desalocação da váriavel

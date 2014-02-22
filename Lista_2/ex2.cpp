@@ -39,12 +39,15 @@ int  main() {
 
 	std::cout << "Digite um número para conversão: ";
 	std::cin >> *n; // leitura do número para conversão
-
-	std::cout << *n << " na base 2 é: ";
-	std::cout << converteBin_Cauda(*n, 0, 0); // chamada da função de conversão
-	std::cout << "\n"; // pula uma linha
-	std::cout << converteBin_Iterativa(*n, 0); // chamada da função de conversão
-	std::cout << "\n"; // pula uma linha
+	if(*n >= 0){
+		std::cout << *n << " na base 2 é: ";
+		std::cout << converteBin_Cauda(*n, 0, 0); // chamada da função de conversão
+		std::cout << "\n"; // pula uma linha
+		std::cout << converteBin_Iterativa(*n, 0); // chamada da função de conversão
+	} else {
+		std::cout << "O número tem que ser positivo";
+	}
+	std::cout << "\n"; // pula linha
 
 	delete n; // desalocação da váriavel
 
