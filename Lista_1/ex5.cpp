@@ -5,7 +5,7 @@
  * e inserí-la no final da lista composta pelos números já digitados. 
  *  
  * Quando o usuário digitar um número menor ou igual a 0 (zero), 
- * imprimir os números digitados na ordem inversa daquela em que eles foram informados pelo usuário.
+ * imprimir os números digitados em ordem crescente.
  */
 
 #include <iostream>
