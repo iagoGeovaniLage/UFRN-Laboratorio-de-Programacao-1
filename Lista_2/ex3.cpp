@@ -14,66 +14,64 @@
 
 #include <iostream>
 #include <cstdlib> // para usar a função rand()
+#include <stack> // para usar uma pilha para guardar os pontos válidos percorridos na matriz
 
 // Definição das LINHAS X COLUNAS do labirinto
 	#define LINHAS 10 // quantidade de linhas do labirinto
 	#define COLUNAS 10 // quantidade de colunas do labirinto
 
+// Estrutura feita para declarar um ponto
+	typedef struct {
+		int x;
+		int y;
+	} Ponto;
+
 /*
  * Função para buscar possível saída do labirinto.
  * Adaptada do código feito pela aluna Karydja
  */
-	bool buscaSaida(int xAnterior, int yAnterior, int xAtual, int yAtual, bool **lab) {
-	 	if (lab[xAtual][yAtual]) { //Se o ponto for valido
-	 		if (xAtual == 0 || xAtual == LINHAS - 1 || yAtual == 0 || yAtual == COLUNAS - 1) //Se o ponto estiver em alguma borda já é uma saida
-				return true;
-			else {
-				lab[xAnterior][yAnterior] = false; // Anulando o ponto anterior, para que nao seja visitado novamente
-
-				// cria os ponto de verificação
-					int *cimaX     = new int; 
-					int *cimaY     = new int; 
-					int *baixoX    = new int; 
-					int *baixoY    = new int; 
-					int *direitaX  = new int; 
-					int *direitaY  = new int; 
-					int *esquerdaX = new int; 
-					int *esquerdaY = new int;
-					// ponto acima do atual
-						*cimaX     = xAtual;
-						*cimaX     = yAtual - 1;
-					// ponto a direita da atual
-						*direitaX  = xAtual + 1;
-						*direitaY  = yAtual;
-					// ponto abaixo do atual
-						*baixoX    = xAtual;
-						*baixoY    = yAtual + 1;
-					// ponto a esquerda do atual
-						*esquerdaX = xAtual - 1;
-						*esquerdaY = yAtual;
+	bool buscaLabirinto (Ponto anterior, Ponto atual, bool **lab, std::stack<Ponto>& pilha) {
+	 	pilha.push(atual);
+	 	if (lab[atual.x][atual.y]) { // Se o ponto for TRUE
+	 		if (atual.x == 0 || atual.x == LINHAS - 1 || atual.y == 0 || atual.y == COLUNAS - 1) // Se o ponto estiver em alguma borda
+	 			return true;
+	 		else {
+				lab[anterior.x][anterior.y] = false; // Anulando o ponto anterior, para que nao seja visitado novamente
 				
-				//Realizando chamadas recursivas para os pontos adjacentes
+				Ponto p1, p2, p3, p4;
+					p1.x = atual.x; 		// p1 = ponto acima do atual
+					p1.y = atual.y - 1;
+					p2.x = atual.x + 1;		// p2 = ponto a direita da atual
+					p2.y = atual.y;
+					p3.x = atual.x;			// p3 = ponto abaixo do atual
+					p3.y = atual.y + 1;
+					p4.x = atual.x - 1;		// p4 = ponto a esquerda do atual
+					p4.y = atual.y;
+				
+				// chamadas recursivas para os pontos adjacentes
 					bool a, b, c, d;
-					a = buscaSaida(xAtual, yAtual, *cimaX, *cimaY, lab);
-					b = buscaSaida(xAtual, yAtual, *direitaX, *direitaY, lab);
-					c = buscaSaida(xAtual, yAtual, *baixoX, *baixoY, lab);
-					d = buscaSaida(xAtual, yAtual, *esquerdaX, *esquerdaY, lab);
+					a = buscaLabirinto(atual, p1, lab, pilha);
+					b = buscaLabirinto(atual, p2, lab, pilha);
+					c = buscaLabirinto(atual, p3, lab, pilha);
+					d = buscaLabirinto(atual, p4, lab, pilha);
 				
-				if (a || b || c || d) // verifica se pelo menos um dos pontos é válido
+				if (a || b || c || d)
 	               return true;
 	            else
 	       	       return false;
 			}
-	 	} else // Se o ponto nao for valido
+	 	} else { //Se o ponto for FALSE
+			pilha.pop();
 			return false;
+	 	}
 	}
 
 int main(){
  	// alocação das variáveis
+		Ponto *inicio = new Ponto;
 	 	int *i        = new int;
 	 	int *j        = new int;
-	 	int *posicaoX = new int;
-	 	int *posicaoY = new int;
+		std::stack<Ponto> pilha;
 
 		// Alocação da matriz
 			bool **lab = new bool *[LINHAS];
@@ -90,22 +88,28 @@ int main(){
 		}
 	// Posição inicial no labirinto
 		std::cout << "Informe a linha inicial: ";
-		std::cin >> *posicaoX;
+		std::cin >> (*inicio).x;
 		std::cout << "Informe a coluna inicial: ";
-		std::cin >> *posicaoY;
+		std::cin >> (*inicio).y;
 
 	// Chamada da função para verificar se há saída para o labirinto
-		if(buscaSaida(*posicaoX, *posicaoY,*posicaoX, *posicaoY, lab))
+		if(buscaLabirinto(*inicio, *inicio, lab, pilha)) {
 	    	std::cout << "Existe solucao para o labirinto!\n";
-	    else
-	    	std::cout << "Não existe solucao para o labirinto!\n";
+	    	std::cout << "As coordenadas visitadas foram:";
+	    	while (!pilha.empty()) {
+	    		std::cout << "(" << pilha.top().x << "," << pilha.top().y << ") ";
+	    		pilha.pop();
+	    	}
+	    } else
+	    	std::cout << "Nao existe solucao para o labirinto!";
+
+    std::cout << "\n"; // pula linha
 
 	// desalocação das variáveis
 		delete i;
 		delete j;
 		delete lab;
-		delete posicaoX;
-		delete posicaoY;
+		delete inicio;
 
  	return 0;
 }
