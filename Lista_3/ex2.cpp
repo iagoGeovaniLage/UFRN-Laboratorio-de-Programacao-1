@@ -1,8 +1,8 @@
 /*
  * Crie uma classe chamada Ponto utilizando as seguintes informações: 
- * 		- Seus atributos são duas coordenadas x e y; Ok!
- * 		- Defina um construtor que recebe estes dois parâmetros; Ok!
- * 		- Defina os métodos get inline e os set normalmente; Ok!
+ * 		- Seus atributos são duas coordenadas x e y;
+ * 		- Defina um construtor que recebe estes dois parâmetros;
+ * 		- Defina os métodos get inline e os set normalmente;
  * 		- Escreva um método chamado equals que recebe um outro ponto como argumento 
  *		retornando true se as coordenadas de ambos forem iguais e false caso contrário;  
  * 		- Implemente um método chamado distancia que recebe um outro ponto como 
@@ -24,17 +24,17 @@
 				virtual ~Ponto(){} // destrutor virtual -- chamada da função feita em tempo de execução e não em tempo de compilação como é o padrão
 
 				// metodos get da classe
-					double getPonto_x(); // retorna a coordenada de x
-					double getPonto_y(); // retorna a coordenada de y
+					double getPonto_x() const; // retorna a coordenada de x
+					double getPonto_y() const; // retorna a coordenada de y
 
 				// metodos set da classe
 					void setPonto_x(double a); // retorna a coordenada de x
 					void setPonto_y(double a); // retorna a coordenada de y
 
 				// metodo para verificar se dois pontos são iguais
-					bool equals (Ponto p);
+					bool equals (Ponto p) const;
 				// metodo para verificar a distância entre dois pontos
-					double dist(Ponto p);
+					double dist(Ponto p) const;
 	};
 
 	// metodo construtor da classe
@@ -44,22 +44,22 @@
 				y = b;
 		}
 	// metodos get da classe
-		inline double Ponto::getPonto_x() { return x; }
-		inline double Ponto::getPonto_y() { return y; }
+		inline double Ponto::getPonto_x() const { return x; }
+		inline double Ponto::getPonto_y() const { return y; }
 
 	// metodos set da classe
 		void Ponto::setPonto_x(double a) { x = a; }
 		void Ponto::setPonto_y(double a) { y = a; }
 
 	// metodo para verificar se dois pontos são iguais
-		bool Ponto::equals (Ponto p) { 
+		bool Ponto::equals (Ponto p) const { 
 			if( (x == p.x) && (y == p.y) )
 				return true;
 			else
 				return false;
 		}
 	// metodo para verificar a distância entre dois pontos
-		double Ponto::dist(Ponto p) {
+		double Ponto::dist(Ponto p) const {
 			return sqrt(pow(x - p.x, 2.0) + pow(y - p.y, 2.0));
 		}
 
