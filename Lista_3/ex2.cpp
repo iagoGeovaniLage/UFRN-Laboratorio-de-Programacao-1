@@ -18,6 +18,7 @@
 		// definição dos atributos da classe por padrão PRIVATE
 			double x;
 			double y;
+			static int total;
 		// definição dos metódos da classe todos públicos
 			public:
 				Ponto(double a, double b); // construtor
@@ -26,6 +27,7 @@
 				// metodos get da classe
 					double getPonto_x() const; // retorna a coordenada de x
 					double getPonto_y() const; // retorna a coordenada de y
+					static int getTotal() { return total; }
 
 				// metodos set da classe
 					void setPonto_x(double a); // retorna a coordenada de x
@@ -36,12 +38,15 @@
 				// metodo para verificar a distância entre dois pontos
 					double dist(Ponto p) const;
 	};
+	// inicialização do dado membro estático
+		int Ponto::total = 0;
 
 	// metodo construtor da classe
 		Ponto::Ponto(double a, double b){
 			// inicialização dos atributos
 				x = a;
 				y = b;
+				++total;
 		}
 	// metodos get da classe
 		inline double Ponto::getPonto_x() const { return x; }
@@ -70,6 +75,8 @@ int main(){
 		Ponto* p1 = new Ponto( 1.0, 2.0 );
 		Ponto* p2 = new Ponto( 1.0, 2.0 );
 
+		std::cout << "O total de pontos é " << Ponto::getTotal() << ".\n";
+
 	// chamadas do metodo getPonto para mostrar os pontos
 		std::cout << "As coordenadas de P1 são (" << (*p1).getPonto_x() << "," << (*p1).getPonto_y() << ")\n";
 		std::cout << "As coordenadas de P2 são (" << (*p2).getPonto_x() << "," << (*p2).getPonto_y() << ")\n";
@@ -97,6 +104,7 @@ int main(){
 				std::cout << "Os pontos P1 e P2 são diferentes!\n";
 	// metodo dist entre P1 e P2 - result = 1
 			std::cout << "A distância entre os pontos P1 e P2 é " << (*p1).dist(*p2) << ".\n";
+
 
 	// desalocação da memória dos pontos
 		delete p1;
