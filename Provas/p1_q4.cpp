@@ -23,7 +23,8 @@
 		// definição dos metódos da classe todos públicos
 			public:
 				// metódos de contrução e desconstrução
-					Fracao (int n, int d); // método contrutor padrão
+					Fracao () { } // método contrutor padrão
+					Fracao (int n, int d); // método contrutor recebendo parametros
 					virtual ~Fracao() { } // destrutor virtual -- chamada da função feita em tempo de execução e não em tempo de compilação como é o padrão
 
 				// metódos estáticos - de uso da classe e não do objeto
@@ -85,34 +86,82 @@
 		}
 	// simplifica a fração usando o mdc entre o numerador e o denominador
 		void Fracao::simplifica() {
-			num = num/mdc(num, den); // divide o numerador pelo MDC entre o numerador e o denominador
-			den = den/mdc(num, den); // divide o denominador pelo MDC entre o numerador e o denominador
+			// alocação dinamica de x
+				int *x = new int;
+
+			*x = mdc(num, den); // váriavel x recebe o mdc entre o numerador e o denominador
+
+			num /= *x; // divide o numerador pelo MDC entre o numerador e o denominador
+			den /= *x; // divide o denominador pelo MDC entre o numerador e o denominador
+
+			// desalocação da váriavel x
+				delete x;
 		}
 
 int main(){
-	Fracao *f1  = new Fracao(1,1);
-	Fracao *f2  = new Fracao(1,1);
-	Fracao *f3  = new Fracao(16,26);
-	Fracao *res = new Fracao(1,1);
+	// alocação das frações na memória
+		Fracao *f1  = new Fracao(10,12);
+		Fracao *f2  = new Fracao(16,26);
+		// Fração que receberá os resultados das operações, instanciada pelo construtor padrão
+			Fracao *res = new Fracao();
 
-	Fracao::soma(*f1, *f2, res);
-	std::cout << (*res).getNum() << "/" << (*res).getDen() << "\n";
+	std::cout << "\n--- Operações aritméticas entre frações (com simplificação) ---\n\n"; // pula linha
 
-	Fracao::sub(*f1, *f2, res);
-	std::cout << (*res).getNum() << "/" << (*res).getDen() << "\n";
+	// Operando uma soma entre as duas frações
+			Fracao::soma(*f1, *f2, res);
+			std::cout << "A soma entre " << f1->getNum() << "/" << f1->getDen();
+			std::cout << " e " << f2->getNum() << "/" << f2->getDen() << " = ";
+			std::cout << res->getNum() << "/" << res->getDen();
+			res->simplifica();
+			std::cout << " ou " << res->getNum() << "/" << res->getDen() << " simplicado.\n";
 
-	Fracao::mult(*f1, *f2, res);
-	std::cout << (*res).getNum() << "/" << (*res).getDen() << "\n";
+	// Operando uma subtração entre as duas frações
+			Fracao::sub(*f1, *f2, res);
+			std::cout << "A subtração entre " << f1->getNum() << "/" << f1->getDen();
+			std::cout << " e " << f2->getNum() << "/" << f2->getDen() << " = ";
+			std::cout << res->getNum() << "/" << res->getDen();
+			res->simplifica();
+			std::cout << " ou " << res->getNum() << "/" << res->getDen() << " simplicado.\n";
 
-	Fracao::div(*f1, *f2, res);
-	std::cout << (*res).getNum() << "/" << (*res).getDen() << "\n";
-	
-	std::cout << (*f1).compare(*f2) << "\n";
-	std::cout << (*f1).compare(*res) << "\n";
+	// Operando uma multiplicação entre as duas frações
+			Fracao::mult(*f1, *f2, res);
+			std::cout << "A multiplicação entre " << f1->getNum() << "/" << f1->getDen();
+			std::cout << " e " << f2->getNum() << "/" << f2->getDen() << " = ";
+			std::cout << res->getNum() << "/" << res->getDen();
+			res->simplifica();
+			std::cout << " ou " << res->getNum() << "/" << res->getDen() << " simplicado.\n";
 
-	std::cout << (*f3).getNum() << "/" << (*f3).getDen() << "\n";
-	(*f3).simplifica();
-	std::cout << (*f3).getNum() << "/" << (*f3).getDen() << "\n";
+	// Operando uma divisão entre as duas frações
+			Fracao::div(*f1, *f2, res);
+			std::cout << "A divisão entre " << f1->getNum() << "/" << f1->getDen();
+			std::cout << " e " << f2->getNum() << "/" << f2->getDen() << " = ";
+			std::cout << res->getNum() << "/" << res->getDen();
+			res->simplifica();
+			std::cout << " ou " << res->getNum() << "/" << res->getDen() << " simplicado.\n";
+
+	std::cout << "\n--- Comparação entre frações ---\n\n"; // pula linha
+
+	// Teste do metódo SET, alterando frações para teste de comparação
+		// alterando f1
+			f1->setNum(2);
+			f1->setDen(15);
+		// alterando f2
+			f2->setNum(2);
+			f2->setDen(15);
+			
+	// teste da função compare - esperando iguais
+		if(f1->compare(*f2))
+			std::cout << "As frações " << f1->getNum() << "/" << f1->getDen() << " e " << f2->getNum() << "/" << f2->getDen() << " são iguais\n";
+		else
+			std::cout << "As frações " << f1->getNum() << "/" << f1->getDen() << " e " << f2->getNum() << "/" << f2->getDen() << " são diferentes\n";
+
+	// teste da função compare - esperando diferentes
+		if(f1->compare(*res))
+			std::cout << "As frações " << f1->getNum() << "/" << f1->getDen() << " e " << res->getNum() << "/" << res->getDen() << " são iguais\n";
+		else
+			std::cout << "As frações " << f1->getNum() << "/" << f1->getDen() << " e " << res->getNum() << "/" << res->getDen() << " são diferentes\n";
+
+	std::cout << "\n"; // pula linha
 
 	return 0;
 }
