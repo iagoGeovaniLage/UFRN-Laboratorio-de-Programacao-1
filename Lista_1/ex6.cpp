@@ -6,6 +6,9 @@
  */
 
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 void preencheVet(int v[], int *n){
 	// alocação da váriavel de controle de laço da função
@@ -22,8 +25,8 @@ int main (){
 		int *n = new int;
 		int *i = new int;
 
-	std::cout << "Digite um indice para o vetor: ";
-	std::cin >> *n; // Entrada do indice do vetor
+	cout << "Digite um indice para o vetor: ";
+	cin >> *n; // Entrada do indice do vetor
 
 	// Alocação do vetor de inteiros 
 		int *vet = new int[*n];
@@ -32,8 +35,8 @@ int main (){
 
 	// impressão do vetor depois de preenchido na função
 		for(*i =0; *i < *n; (*i)++)
-			std::cout << "[" << *i << "] = " << vet[*i] << " ";
-		std::cout << "\n";
+			cout << "[" << *i << "] = " << vet[*i] << " ";
+		cout << "\n";
 
 	// Desalocação de todas as variáveis alocadas
 		delete n;

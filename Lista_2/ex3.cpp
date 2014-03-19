@@ -16,6 +16,11 @@
 #include <cstdlib> // para usar a função rand()
 #include <stack> // para usar uma pilha para guardar os pontos válidos percorridos na matriz
 
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
+	using std::endl;
+
 // Definição das LINHAS X COLUNAS do labirinto
 	#define LINHAS 10 // quantidade de linhas do labirinto
 	#define COLUNAS 10 // quantidade de colunas do labirinto
@@ -82,28 +87,28 @@ int main(){
 		for(*i = 0; *i < LINHAS; (*i)++) {
 			for(*j = 0; *j < COLUNAS; (*j)++){
 				lab[*i][*j] = rand()%2; // gera elementos da matriz de forma aleatória
-				std::cout << lab[*i][*j] << " ";	 	  
+				cout << lab[*i][*j] << " ";	 	  
 			}
-	 		std::cout << std::endl;
+	 		cout << endl;
 		}
 	// Posição inicial no labirinto
-		std::cout << "Informe a linha inicial: ";
-		std::cin >> (*inicio).x;
-		std::cout << "Informe a coluna inicial: ";
-		std::cin >> (*inicio).y;
+		cout << "Informe a linha inicial: ";
+		cin >> (*inicio).x;
+		cout << "Informe a coluna inicial: ";
+		cin >> (*inicio).y;
 
 	// Chamada da função para verificar se há saída para o labirinto
 		if(buscaLabirinto(*inicio, *inicio, lab, pilha)) {
-	    	std::cout << "Existe solucao para o labirinto!\n";
-	    	std::cout << "As coordenadas visitadas foram:";
+	    	cout << "Existe solucao para o labirinto!\n";
+	    	cout << "As coordenadas visitadas foram:";
 	    	while (!pilha.empty()) {
-	    		std::cout << "(" << pilha.top().x << "," << pilha.top().y << ") ";
+	    		cout << "(" << pilha.top().x << "," << pilha.top().y << ") ";
 	    		pilha.pop();
 	    	}
 	    } else
-	    	std::cout << "Nao existe solucao para o labirinto!";
+	    	cout << "Nao existe solucao para o labirinto!";
 
-    std::cout << "\n"; // pula linha
+    cout << "\n"; // pula linha
 
 	// desalocação das variáveis
 		delete i;

@@ -7,6 +7,9 @@
  */
  
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 int main (){
 	// Alocação das variáveis de controle
@@ -15,11 +18,11 @@ int main (){
 		int *i   = new int;
 		int *j   = new int;
 
-	std::cout << "Digite o tamanho da linha da matriz: ";
-	std::cin >> *lin; // entrada do tamanho da linha da matriz
+	cout << "Digite o tamanho da linha da matriz: ";
+	cin >> *lin; // entrada do tamanho da linha da matriz
 
-	std::cout << "Digite o tamanho da coluna da matriz: ";
-	std::cin >> *col; // entrada do tamanho da coluna da matriz
+	cout << "Digite o tamanho da coluna da matriz: ";
+	cin >> *col; // entrada do tamanho da coluna da matriz
 
 	// Alocação da matrizes
 		double **mat1 = new double *[*lin];
@@ -34,10 +37,10 @@ int main (){
 	// Entrada e soma das matrizes
 		for(*i = 0; *i < *lin; (*i)++){
 			for(*j = 0; *j < *col; (*j)++){
-				std::cout << "Mat1 = [" << *i << "][" << *j << "] = ";
-				std::cin >> mat1[*i][*j]; // entrada na matriz 1
-				std::cout << "Mat2 = [" << *i << "][" << *j << "] = ";
-				std::cin >> mat2[*i][*j]; // entrada na matriz 2
+				cout << "Mat1 = [" << *i << "][" << *j << "] = ";
+				cin >> mat1[*i][*j]; // entrada na matriz 1
+				cout << "Mat2 = [" << *i << "][" << *j << "] = ";
+				cin >> mat2[*i][*j]; // entrada na matriz 2
 				matRes[*i][*j] = mat1[*i][*j] + mat2[*i][*j]; // Soma das matrizes
 			}
 		}
@@ -45,9 +48,9 @@ int main (){
 	// Impressão da matriz resultado
 		for(*i = 0; *i < *lin; (*i)++){
 			for(*j = 0; *j < *col; (*j)++){
-				std::cout << "[" << *i << "][" << *j << "] = " << matRes[*i][*j] << " ";
+				cout << "[" << *i << "][" << *j << "] = " << matRes[*i][*j] << " ";
 			}
-			std::cout << "\n"; // pula linha
+			cout << "\n"; // pula linha
 		}
 
 	// Desalocação de todas as variáveis

@@ -6,6 +6,9 @@
  */
 
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 // Criação de uma função usando esse tipo genérico de variável
 	template <typename Tipo>
@@ -19,13 +22,13 @@
 	void imprimi(int res) {
 		switch(res){
 			case 0:
-				std::cout << "São iguais!\n";
+				cout << "São iguais!\n";
 				break;
 			case 1:
-				std::cout << "O primeiro é maior!\n";
+				cout << "O primeiro é maior!\n";
 				break;
 			case -1:
-				std::cout << "O segundo é maior!\n";
+				cout << "O segundo é maior!\n";
 				break;
 		}
 	}
@@ -47,21 +50,21 @@
 				char *char_2 = new char;
 
 		// leitura dos inteiros
-			std::cout << "Digite dois números (int):";
-				std::cin >> *int_1;
-				std::cin >> *int_2;
+			cout << "Digite dois números (int):";
+				cin >> *int_1;
+				cin >> *int_2;
 		imprimi(Compare(*int_1, *int_2)); // imprimi o resultado da função para inteiros
 
 		// leitura dos ponto-flutuantes
-			std::cout << "Digite dois números (float):";
-				std::cin >> *float_1;
-				std::cin >> *float_2;
+			cout << "Digite dois números (float):";
+				cin >> *float_1;
+				cin >> *float_2;
 		imprimi(Compare(*float_1, *float_2)); // imprimi o resultado da função para ponto-fluantes
 
 		// leitura dos char
-			std::cout << "Digite dois caracteres:";
-				std::cin >> *char_1;
-				std::cin >> *char_2;
+			cout << "Digite dois caracteres:";
+				cin >> *char_1;
+				cin >> *char_2;
 		imprimi(Compare(*char_1, *char_2)); // imprimi o resultado da função para ponto-fluantes
 
 		// desalocando as variáveis

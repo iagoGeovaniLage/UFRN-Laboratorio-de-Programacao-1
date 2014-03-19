@@ -1,4 +1,7 @@
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 /*
  * Função 1 = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n...
@@ -23,11 +26,11 @@
 int  main() {
 	float *n = new float; // alocação de uma variável ponto flutuante base para as funções
 
-	std::cout << "Digite um número: ";
-	std::cin >> *n; // leitura do número base
+	cout << "Digite um número: ";
+	cin >> *n; // leitura do número base
 
-	std::cout << f1(*n) << "\n"; // chamada da função 1
-	std::cout << f2(*n) << "\n"; // chamada da função 2
+	cout << f1(*n) << "\n"; // chamada da função 1
+	cout << f2(*n) << "\n"; // chamada da função 2
 
 	delete n;
 

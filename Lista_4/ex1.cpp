@@ -4,6 +4,9 @@
  */
 
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 // Definição de um tipo de variável genérica
 	template <typename Tipo>
@@ -23,18 +26,18 @@
 				float *num4 = new float;
 
 		// leitura dos inteiros
-			std::cout << "Digite dois números (int):";
-				std::cin >> *num1;
-				std::cin >> *num2;
+			cout << "Digite dois números (int):";
+				cin >> *num1;
+				cin >> *num2;
 
 		// leitura dos ponto-flutuantes
-			std::cout << "Digite dois números (float):";
-				std::cin >> *num3;
-				std::cin >> *num4;
+			cout << "Digite dois números (float):";
+				cin >> *num3;
+				cin >> *num4;
 
 		// mostrando os resultados
-			std::cout << "A soma é: " << soma(*num1, *num2) << " (int)\n";
-			std::cout << "A soma é: " << soma(*num3, *num4) << " (float)\n";
+			cout << "A soma é: " << soma(*num1, *num2) << " (int)\n";
+			cout << "A soma é: " << soma(*num3, *num4) << " (float)\n";
 
 		// desalocando as variáveis
 			delete num1;

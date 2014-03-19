@@ -9,6 +9,9 @@
  */
 
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 // Estrutura da lista
 	struct Item {
@@ -52,7 +55,7 @@
 		aux = lista->proximo;
 		
 		while(aux){
-			std::cout << aux->valor << " ";
+			cout << aux->valor << " ";
 			aux = aux->proximo;
 		}
 		// desalocação da variável aux
@@ -69,7 +72,7 @@ int main (){
 
 	do {
 		// leitura do número que será inserido
-			std::cin >> *n;
+			cin >> *n;
 
 		if(*n > 0) // verifica se o número não é negativo ou zero, pois zero encerra o processo de inserção e negativo não é permitido pelo enunciado
 			*lista = inserir(lista,*n); // inserção
@@ -78,7 +81,7 @@ int main (){
 	// chamada da função de impressão
 		imprimir(lista);
 
-	std::cout << "\n"; // pula linha
+	cout << "\n"; // pula linha
 
 	// Desalocando todas as variáveis do programa
 		delete n;

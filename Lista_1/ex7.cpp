@@ -11,6 +11,9 @@
  * os elementos, alocar memória dinamicamente, imprimir os elementos lidos e alocados e finalmente liberar a memória.
  */
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 // Função para alocação do vetor
 	int * criaVetor(int n){
@@ -29,9 +32,9 @@
 // Função para imprimir o vetor
 	void imprimeVetor(int *v, int n){
 		for (int i = 0; i < n; ++i) {
-			std::cout << v[i];
+			cout << v[i];
 			if(i != n-1)
-				std::cout << " ";
+				cout << " ";
 		}
 	}
 
@@ -47,15 +50,15 @@ int main (){
 		int   *n   = new int;
 		int   *vet = new int;
 
-	std::cout << "Tamanho do vetor: ";
-	std::cin >> *n; // Tamanho do vetor que será alocado
+	cout << "Tamanho do vetor: ";
+	cin >> *n; // Tamanho do vetor que será alocado
 
 	vet = criaVetor(*n); // alocar o vetor
 	preencheVetor(vet, *n); // preencher o vetor
 	imprimeVetor(vet, *n); // imprimir o vetor
 	desalocaVetor(vet); // desalocar o vetor
 
-	std::cout << "\n"; // pula linha
+	cout << "\n"; // pula linha
 
 	// Desalocando todas as variáveis do programa
 		delete n;

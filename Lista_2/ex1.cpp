@@ -5,6 +5,9 @@
  */
 
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 
 // Função de exponenciação, será usada na conversão.
 	long int pow(long int n, long int exp) {
@@ -25,15 +28,15 @@
 int  main() {
 	long int *n = new long int; // alocação de uma variável inteira para conversão
 
-	std::cout << "Digite um número para conversão: ";
-	std::cin >> *n; // leitura do número para conversão
+	cout << "Digite um número para conversão: ";
+	cin >> *n; // leitura do número para conversão
 	if(*n >= 0) {
-		std::cout << *n << " na base 2 é: ";
-		std::cout << converteBinario(*n, 0); // chamada da função de conversão
+		cout << *n << " na base 2 é: ";
+		cout << converteBinario(*n, 0); // chamada da função de conversão
 	} else {
-		std::cout << "O número tem que ser positivo";
+		cout << "O número tem que ser positivo";
 	}
-	std::cout << "\n"; // pula linha
+	cout << "\n"; // pula linha
 
 	delete n; // desalocação da váriavel
 

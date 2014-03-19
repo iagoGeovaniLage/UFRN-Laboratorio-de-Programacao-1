@@ -7,6 +7,9 @@
  * ser realizada de forma simples através de um método denominado Boundary-fill.
  */
 #include <iostream>
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
 int main(){
  	return 0;
 }

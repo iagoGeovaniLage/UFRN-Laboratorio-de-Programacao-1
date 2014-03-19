@@ -36,12 +36,10 @@
 // Programa Principal
 	int main(){
 		// alocação dinâmica dos vetores
-			Animal *animal = new Animal;
 			Gato *gato = new Gato;
 			Cachorro *cachorro = new Cachorro;
 			Leao *leao = new Leao;
 
-		animal->emitir_Som();
 		gato->emitir_Som();
 		cachorro->emitir_Som();
 		leao->emitir_Som();

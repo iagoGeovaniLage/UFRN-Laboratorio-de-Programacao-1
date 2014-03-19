@@ -6,6 +6,10 @@
 
 #include <iostream>
 
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
+
 // Criação de uma função usando esse tipo genérico de variável
 	template <typename Tipo>
 	int Compare(Tipo a, Tipo b) { 
@@ -45,15 +49,15 @@
 	template <typename Tipo>
 	void imprimiVet(Tipo v[], int tam, int tipo){
 		if(tipo == 1)
-			std::cout << "Vetor antes da ordenação: ";
+			cout << "Vetor antes da ordenação: ";
 		else
-			std::cout << "Vetor depois da ordenação: ";
+			cout << "Vetor depois da ordenação: ";
 		for (int i = 0; i < tam; ++i){
-			std::cout << v[i];
+			cout << v[i];
 			if(i != tam-1)
-				std::cout << ", ";
+				cout << ", ";
 		}
-		std::cout << "\n";
+		cout << "\n";
 	}
 
 
@@ -76,19 +80,19 @@
 				imprimiVet(v1, 10, 1);
 				insertionSort(v1, 10);
 				imprimiVet(v1, 10, 0);
-			std::cout << "\n"; // pula linha
+			cout << "\n"; // pula linha
 
 			// ponto flutuantes
 				imprimiVet(v2, 10, 1);
 				insertionSort(v2, 10);
 				imprimiVet(v2, 10, 0);
-			std::cout << "\n"; // pula linha
+			cout << "\n"; // pula linha
 
 			// caracteres
 				imprimiVet(v3,10, 1);
 				insertionSort(v3, 10);
 				imprimiVet(v3,10, 0);
-			std::cout << "\n"; // pula linha
+			cout << "\n"; // pula linha
 
 		// desalocando as variáveis
 			delete v1;
