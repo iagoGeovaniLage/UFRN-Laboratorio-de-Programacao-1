@@ -6,26 +6,30 @@
 
 #include <iostream>
 
+// inclusão de alguns metodos do namespace std
+	using std::cout;
+	using std::cin;
+
 // Declaração da Super Classe
 	class Animal{
 		public:
-			void emitir_Som() { std::cout << "Animal geral!\n"; }
+			void emitir_Som() { cout << "Animal geral!\n"; }
 	};
 
 // Declaração das sub-classes || todas herdadas da classe Animal
 	class Gato : public Animal{
 		public:
-			void emitir_Som(){ std::cout << "Miau!\n"; }
+			void emitir_Som(){ cout << "Miau!\n"; }
 	};
 
 	class Cachorro : public Animal{
 		public:
-			void emitir_Som(){ std::cout << "Au Au!\n"; }
+			void emitir_Som(){ cout << "Au Au!\n"; }
 	};
 
 	class Leao : public Animal{
 		public:
-			void emitir_Som(){ std::cout << "Waarr!\n"; }
+			void emitir_Som(){ cout << "Waarr!\n"; }
 	};
 
 
