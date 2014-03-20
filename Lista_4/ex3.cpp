@@ -5,7 +5,6 @@
  */
 
 #include <iostream>
-
 // inclusão de alguns metodos do namespace std
 	using std::cout;
 	using std::cin;
@@ -45,21 +44,7 @@
 			delete key;
 	}
 
-// função para imprimir vetor
-	template <typename Tipo>
-	void imprimiVet(Tipo v[], int tam, int tipo){
-		if(tipo == 1)
-			cout << "Vetor antes da ordenação: ";
-		else
-			cout << "Vetor depois da ordenação: ";
-		for (int i = 0; i < tam; ++i){
-			cout << v[i];
-			if(i != tam-1)
-				cout << ", ";
-		}
-		cout << "\n";
-	}
-
+#include "aux_ex3.cpp" // incluí funções que serão usadas nos testes
 
 // Programa Principal
 	int main(){

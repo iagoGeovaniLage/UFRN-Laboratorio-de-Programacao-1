@@ -10,17 +10,14 @@
 
 // Definição de um tipo de variável genérica
 	template <typename Tipo>
-// Criação de uma função usando esse tipo genérico de variável
-	Tipo soma(Tipo a, Tipo b) { return a + b; }
+	Tipo soma(Tipo a, Tipo b) { return a + b; } // Criação de uma função usando esse tipo genérico de variável
 
 // Programa Principal
 	int main(){
-
 		// alocação dinâmica de variáveis
 			// tipo Int
 				int *num1 = new int;
 				int *num2 = new int;
-
 			// tipo Float
 				float *num3 = new float;
 				float *num4 = new float;
@@ -29,12 +26,10 @@
 			cout << "Digite dois números (int):";
 				cin >> *num1;
 				cin >> *num2;
-
 		// leitura dos ponto-flutuantes
 			cout << "Digite dois números (float):";
 				cin >> *num3;
 				cin >> *num4;
-
 		// mostrando os resultados
 			cout << "A soma é: " << soma(*num1, *num2) << " (int)\n";
 			cout << "A soma é: " << soma(*num3, *num4) << " (float)\n";
@@ -45,5 +40,5 @@
 			delete num3;
 			delete num4;
 
-		return 0;	
+		return 0;
 	}

@@ -18,33 +18,17 @@
 		else return -1;
 	}
 
-// imprimir comparação
-	void imprimi(int res) {
-		switch(res){
-			case 0:
-				cout << "São iguais!\n";
-				break;
-			case 1:
-				cout << "O primeiro é maior!\n";
-				break;
-			case -1:
-				cout << "O segundo é maior!\n";
-				break;
-		}
-	}
+#include "aux_ex2.cpp" // incluí funções que serão usadas nos testes
 
 // Programa Principal
 	int main(){
-
 		// alocação dinâmica de variáveis
 			// tipo Int
 				int *int_1 = new int;
 				int *int_2 = new int;
-
 			// tipo Float
 				float *float_1 = new float;
 				float *float_2 = new float;
-
 			// tipo char
 				char *char_1 = new char;
 				char *char_2 = new char;
