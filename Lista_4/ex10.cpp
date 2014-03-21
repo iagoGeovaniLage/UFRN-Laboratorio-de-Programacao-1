@@ -18,14 +18,13 @@
 		public:
 			// metodo construtor
 				Array(int tam);
-				virtual ~Array(){ delete vetor; cout << "Apaga\n"; }
+				virtual ~Array(){ delete vetor; }
 	};
 	// metodo construtor usando template
 		template < class T >
 		Array< T >::Array(int tam) {
 			tamanho = tam;
 			vetor = new T[tamanho]; // criando vetor com o tamanho passado pelo parametro
-			cout << "Vetor criado com sucesso!\n";
 		}
 
 
