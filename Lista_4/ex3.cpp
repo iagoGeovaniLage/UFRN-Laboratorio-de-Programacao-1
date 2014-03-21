@@ -20,15 +20,14 @@
 	template <typename Tipo>
 	void insertionSort(Tipo v[], int n){
 		// alocação das váriaveis
-			int *i   = new int;
 			int *j   = new int;
 			Tipo *key = new Tipo;
 
 		//ordenação
-            for (*i = 1; *i < n; (*i)++) {
+            for (int i = 1; i < n; i++) {
                 // considera o elemento i removido de A
-                    *key = v[*i];
-                    *j = *i - 1;
+                    *key = v[i];
+                    *j = i - 1;
                 while (*j >= 0 && (Compare(v[*j],*key) == 1)){
                     // deslocando os elementos em B
                         v[*j+1] = v[*j];
@@ -39,7 +38,6 @@
             }
 
 		// desalocação das váriaveis
-			delete i;
 			delete j;
 			delete key;
 	}
