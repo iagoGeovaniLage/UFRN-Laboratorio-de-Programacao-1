@@ -13,7 +13,7 @@
 // Declaração da Super Classe
 	class Animal{
 		public:
-			void emitir_Som() { cout << "Animal geral!\n"; }
+			virtual void emitir_Som() { cout << "Animal geral!\n"; }
 	};
 
 // Declaração das sub-classes || todas herdadas da classe Animal

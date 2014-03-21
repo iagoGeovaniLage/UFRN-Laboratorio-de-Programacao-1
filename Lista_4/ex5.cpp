@@ -12,7 +12,7 @@ using std::cin;
 // Declaração da Super Classe
 	class Animal{
 		public:
-			void emitir_Som() { cout << "Animal geral!\n"; }
+			virtual void emitir_Som() { cout << "Animal geral!\n"; }
 	};
 
 // Declaração das sub-classes || todas herdadas da classe Animal
@@ -33,6 +33,7 @@ using std::cin;
 
 // declaração da sub-classe zoologico
 	class Zoologico {
+		Animal jaulas[10];
 		static int total;
 		public:
 			void setJaulas(Animal animal) {
@@ -53,8 +54,12 @@ using std::cin;
 			Gato cat1, cat2, cat3;
 			Animal dog1, dog2, dog3, dog4;
 			Leao leao1, leao2, leao3;
+			Animal *teste = new Gato;
+			// teste->emitir_Som();
 
 		Zoologico zoo;
+		zoo.setJaulas(*teste);
+		zoo.emitir_Som();
 
 		// desalocando as variáveis
 
