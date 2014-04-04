@@ -16,19 +16,18 @@
 #include <iostream>
 #include <cstdlib>
 
-// alguns metódos do namespace std 
+// alguns metódos do namespace std
 	using std::cout;
 	using std::cin;
-	using std::endl;
 
 // Classe que representa cada automóvel
 	class Automovel {
 		// atributos públicos
+			float km;
+			float litros;
+			float consumo;
+			Automovel * next;
 			public:
-				float km;
-				float litros;
-				float consumo;
-				Automovel * next;
 				Automovel()	{ next = NULL; } // construtor padrão
 				Automovel(float k, float l){
 					km      = k;
@@ -36,9 +35,14 @@
 					consumo = km / litros;
 					next = NULL;
 				}
+				// metodos set
+					void setNext(Automovel *novo){ next = novo; }
+				// metodos get
+					float getConsumo() const { return consumo; }
+					Automovel * getNext() const { return next; }
 	};
 	class ListaAutomoveis {
-		Automovel *head;
+		Automovel * head; // aponta para o primeiro tanque listado
 		public:	
 			ListaAutomoveis(){
 				head = NULL;
@@ -50,20 +54,23 @@
 		                head = novoAutomovel;
 		            else {
 		                Automovel *onde = head;
-		                while (onde->next)
-		                    onde = onde->next;
-		                onde->next = novoAutomovel;
+		                while (onde->getNext())
+		                    onde = onde->getNext();
+		                onde->setNext(novoAutomovel);
 		            }
 					// mensagem falando do consumo cadastrado
-						cout << "\nO consumo desse tanque foi de " << novoAutomovel->consumo << "km/l.\n\n";
+						cout << "\nO consumo desse tanque foi de " << novoAutomovel->getConsumo() << "km/l.\n\n";
 		        }
 			// Método para imprimir, na saída padrão, todos os elementos na tela;
 		        void imprimir(){
 		            Automovel* temp = head;
+		            int cont = 0;
+		            cout << "Consumo dos tanques:\n";
 		            while (temp) {
-		                cout << temp->consumo << endl;
-		                temp = temp->next;
+		                cout << "\tTanque " << ++cont << ": " << temp->getConsumo() << "km/l.\n";
+		                temp = temp->getNext();
 		            }
+		            cout << "\n";
 		        }
  	};
 
@@ -81,10 +88,10 @@
 				switch(op){
 					case 1:
 						float k, l;
-						cout << "Digite a quantidade de litros: ";
-							cin >> l;
 						cout << "Digite a quantidade de quilometros: ";
 							cin >> k;
+						cout << "Digite a quantidade de litros: ";
+							cin >> l;
 						autos->inserir(k,l);
 						break;
 					case 2:
