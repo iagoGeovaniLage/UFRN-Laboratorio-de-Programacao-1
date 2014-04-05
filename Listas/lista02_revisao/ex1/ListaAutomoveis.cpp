@@ -25,7 +25,7 @@
 			cout << "\nO consumo desse tanque foi de " << novoAutomovel->getConsumo() << "km/l.\n\n";
     }
 // Método para imprimir, na saída padrão, todos os elementos na tela;
-    void ListaAutomoveis::imprimir() {
+    void ListaAutomoveis::imprimir() const {
         Automovel * temp = head;
         int cont = 0;
         cout << "Consumo dos tanques:\n";
@@ -34,4 +34,17 @@
             temp = temp->getNext();
         }
         cout << "\n";
+    }
+
+// Método para calcular o consumo médio
+    float ListaAutomoveis::consumoMedio() const {
+        Automovel * temp = head;
+        float cont = 0.0;
+        float soma = 0.0;
+        while(temp) {
+            soma += temp->getConsumo();
+            temp = temp->getNext();
+            cont++;
+        }
+        return soma / cont++;
     }

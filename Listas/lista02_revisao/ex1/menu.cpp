@@ -10,11 +10,12 @@
 // menu do programa
 	void menu(int op, ListaAutomoveis * autos){
 		system("clear");
-		while(op != 3){
+		while(op != 4){
 			cout << "Menu de opções:\n";
 			cout << "\tNovo tanque......................1\n";
 			cout << "\tListar os tanques................2\n";
-			cout << "\tSair do programa.................3\n";
+			cout << "\tConsumo Médio....................3\n";
+			cout << "\tSair do programa.................4\n";
 			cout << "Digite a opção: ";
 				cin >> op;
 			system("clear");
@@ -31,7 +32,11 @@
 					autos->imprimir();
 					break;
 				case 3:
-					cout << "\nAté a próxima!\n\n";
+					cout << "O consumo médio do seu carro é: " << autos->consumoMedio() << "km/l.\n";
+					break;
+				case 4:
+					cout << "O consumo médio do seu carro é: " << autos->consumoMedio() << "km/l.\n";
+					cout << "Até a próxima!\n\n";
 					break;
 				default:
 					cout << "\nOpção inválida!\n\n";

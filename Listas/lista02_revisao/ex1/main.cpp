@@ -27,8 +27,11 @@
 // Programa principal
 	int main(){
 
-		ListaAutomoveis *automoveis = new ListaAutomoveis;
-		menu(0,automoveis);
+		// declaração da lista de automóveis
+			ListaAutomoveis *automoveis = new ListaAutomoveis;
+			
+		// execução do menu de opções
+			menu(0, automoveis);
 
 		return 0;
 	}

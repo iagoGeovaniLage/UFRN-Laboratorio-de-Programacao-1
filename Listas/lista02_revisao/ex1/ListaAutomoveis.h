@@ -10,6 +10,8 @@
 				// Método para adicionar um elemento novo ao final da lista.
 					void inserir (float k, float l);
 				// Método para imprimir, na saída padrão, todos os elementos na tela;
-			        void imprimir();
+			        void imprimir() const;
+		        // Método para calcular o consumo médio
+			        float consumoMedio() const;
 	 	};
 #endif
