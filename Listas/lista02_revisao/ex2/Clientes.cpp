@@ -27,3 +27,12 @@ using std::cout;
         }
         cout << "\n";
     }
+
+// Método para imprimir, na saída padrão, todos os clientes
+    Cliente * Clientes::buscarCliente(int conta) const {
+        Cliente * temp = head;
+        while (temp->getConta() != conta) {
+            temp = temp->getNext();
+        }
+        return temp;
+    }

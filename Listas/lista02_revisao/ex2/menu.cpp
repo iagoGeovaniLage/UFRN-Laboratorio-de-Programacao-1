@@ -12,6 +12,9 @@
 
 // menu do programa
 	void menu(int op, Clientes * clientes){
+		Cliente * cliente = new Cliente;
+		int conta;
+		float valor, saldo, limite;
 		system("clear");
 		while(op != 6){
 			cout << "Menu de opções:\n";
@@ -26,20 +29,36 @@
 			system("clear");
 			switch(op){
 				case 1:
-					float saldo;
-					cout << "Digite o Saldo Inicial do Cliente: ";
-						cin >> saldo;
-					float limite;
-					cout << "Digite o Limite do Cliente: ";
-						cin >> limite;
+					saldo  = 1;
+					limite = 0;
+					while(saldo > limite){
+						cout << "Digite o Saldo Inicial do Cliente: ";
+							cin >> saldo;
+						cout << "Digite o Limite do Cliente: ";
+							cin >> limite;
+						if(saldo > limite)
+							cout << "O limite deve ser maior ou igual ao saldo!\n";
+					}
 					clientes->inserir(saldo, limite);
 					break;
 				case 2:
 					clientes->listarClientes();
 					break;
 				case 3:
+					cout << "Digite a conta do cliente: ";
+						cin >> conta;
+					cliente =  clientes->buscarCliente(conta);
+					cout << "Digite o valor da compra: ";
+						cin >> valor;
+					cliente->inserirCompra(valor);
 					break;
 				case 4:
+					cout << "Digite a conta do cliente: ";
+						cin >> conta;
+					cliente = clientes->buscarCliente(conta);
+					cout << "Digite o valor do crédito: ";
+						cin >> valor;
+					cliente->inserirCredito(valor);
 					break;
 				case 5:
 					break;
@@ -51,4 +70,5 @@
 					break;
 			}
 		}
+		delete cliente;
 	}

@@ -10,17 +10,27 @@ using std::cout;
 
 // Construtor Padrão
 	Cliente::Cliente(){
+		conta = 0;
+		saldo = 0;
+		primeiraCompra = NULL;
+		compras = 0;
+		primeiroCredito = NULL;
+		creditos = 0;
+		limite = 0;
 		next = NULL;
 	}
 // Construtor com parâmetros
 	Cliente::Cliente(float s, float l) {
 		conta = ++qtd;
 		saldo = s;
+		primeiraCompra = NULL;
+		compras = 0;
+		primeiroCredito = NULL;
+		creditos = 0;
 		limite = l;
+		next = NULL;
 	}
 // Metódos SET
-	void Cliente::setCompras(float c) { compras = c; }
-	void Cliente::setCreditos(float c) { creditos = c; }
 	void Cliente::setNext(Cliente * novo) { next = novo; }
 // Metódos GET
 	int Cliente::getConta() const{ return conta; }
@@ -36,14 +46,20 @@ using std::cout;
 	}
 // Metódo para inserir uma nova compra na lista
 	void Cliente::inserirCompra(float v) {
-		Compra * novo = new Compra(v);
-		if(primeiraCompra == NULL)
-			primeiraCompra = novo;
-		else {
-			Compra * onde = primeiraCompra;
-			while(onde)
-				onde = onde->getNext();
-			onde->setNext(novo);
+		if(this->getLimite() >= ((saldo + compras - creditos) + v)){
+			Compra * novo = new Compra(v);
+			if(primeiraCompra == NULL) {
+				primeiraCompra = novo;
+			} else {
+				Compra * onde = primeiraCompra;
+				while(onde)
+					onde = onde->getNext();
+				onde->setNext(novo);
+			}
+			compras += v;
+		} else {
+			cout << "O limite de crédito foi excedido!\n";
+			cout << "O Saldo com a compra seria " << getSaldo() + v << " e o limite é " << getLimite() << ".\n";
 		}
 	}
 // Metódo para inserir um novo crédito na lista
@@ -57,4 +73,5 @@ using std::cout;
 				onde = onde->getNext();
 			onde->setNext(novo);
 		}
+		limite += v;
 	}

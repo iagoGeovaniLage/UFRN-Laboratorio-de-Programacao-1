@@ -25,8 +25,6 @@
 				// Construtor com parâmetros
 					Cliente(float s, float l);
 				// Metódos SET
-					void setCompras(float c);
-					void setCreditos(float c);
 					void setNext(Cliente * novo);
 				// Metódos GET
 					int getConta() const;
