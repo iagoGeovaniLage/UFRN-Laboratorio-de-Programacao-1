@@ -18,8 +18,8 @@
 
 			Cliente * next;
 
-			static int qtd; // total de clientes
 			public:
+				static int qtd; // total de clientes
 				// Construtor padrão
 					Cliente();
 				// Construtor com parâmetros
@@ -28,13 +28,11 @@
 					void setNext(Cliente * novo);
 				// Metódos GET
 					int getConta() const;
-					float getSaldo() const;
-					float getCompras() const;
-					float getCreditos() const;
+					float getSaldoAtual() const;
 					float getLimite() const;
 					Cliente * getNext() const;
 				// Metódo para verificar limite de crédito
-					void verificaCredito() const;
+					bool verificaCredito(float valor) const;
 				// Metódo para inserir uma nova compra na lista
 					void inserirCompra(float v);
 				// Metódo para inserir um novo crédito na lista

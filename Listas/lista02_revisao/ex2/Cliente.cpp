@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib> // para uso da função system()
 #include "Compra.h"
 #include "Credito.h"
 #include "Cliente.h"
@@ -34,20 +35,25 @@ using std::cout;
 	void Cliente::setNext(Cliente * novo) { next = novo; }
 // Metódos GET
 	int Cliente::getConta() const{ return conta; }
-	float Cliente::getSaldo() const{ return saldo; }
-	float Cliente::getCompras() const { return compras; }
-	float Cliente::getCreditos() const { return creditos; }
+	float Cliente::getSaldoAtual() const{ return saldo + compras - creditos; }
 	float Cliente::getLimite() const { return limite; }
 	Cliente * Cliente::getNext() const { return next; }
 // Metódo para verificar limite de crédito
-	void Cliente::verificaCredito() const {
-		if((saldo + compras - creditos) > limite)
-			cout << "O limite de crédito foi excedido!\n";
+	bool Cliente::verificaCredito(float valor) const {
+		if( (getSaldoAtual() + valor) > limite )
+			return true;
+		else
+			return false;
 	}
 // Metódo para inserir uma nova compra na lista
 	void Cliente::inserirCompra(float v) {
-		if(this->getLimite() >= ((saldo + compras - creditos) + v)){
+		if(verificaCredito(v)){
+			system("clear");
+			cout << "O limite de crédito foi excedido!\n";
+			cout << "O Saldo com a compra seria " << getSaldoAtual() + v << " e o limite é " << getLimite() << ".\n";
+		} else {
 			Compra * novo = new Compra(v);
+			compras += v;
 			if(primeiraCompra == NULL) {
 				primeiraCompra = novo;
 			} else {
@@ -56,10 +62,7 @@ using std::cout;
 					onde = onde->getNext();
 				onde->setNext(novo);
 			}
-			compras += v;
-		} else {
-			cout << "O limite de crédito foi excedido!\n";
-			cout << "O Saldo com a compra seria " << getSaldo() + v << " e o limite é " << getLimite() << ".\n";
+			cout << "A compra foi realizada com sucesso!\n";
 		}
 	}
 // Metódo para inserir um novo crédito na lista
@@ -74,4 +77,5 @@ using std::cout;
 			onde->setNext(novo);
 		}
 		limite += v;
+		cout << "Valor creditado com sucesso!\n";
 	}

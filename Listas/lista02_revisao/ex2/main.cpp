@@ -28,9 +28,15 @@
 
 // Programa principal
 	int main(){
-		Clientes * clientes = new Clientes;
+
+		// alocando a lista de clientes
+			Clientes * clientes = new Clientes;
+
 		// execução do menu de opções
 			menu(0, clientes);
+
+		// desalocando a lista de clientes
+			delete clientes;
 
 		return 0;
 	}

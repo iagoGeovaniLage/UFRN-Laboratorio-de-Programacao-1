@@ -22,7 +22,9 @@ using std::cout;
         Cliente * temp = head;
         cout << "Os clientes são:\n";
         while (temp) {
-            cout << "\tCliente " << temp->getConta() << ".\n";
+            cout << "\tCliente " << temp->getConta() << "\n";
+            cout << "\t\tSaldo Atual: R$ " << temp->getSaldoAtual() << ".\n";
+            cout << "\t\tLimite: R$ " << temp->getLimite() << ".\n";
             temp = temp->getNext();
         }
         cout << "\n";
