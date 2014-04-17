@@ -1,7 +1,5 @@
 #ifndef _LEBRE_H_
 	#define _LEBRE_H_
-		#include "Lebre.h"
-		#include "Tartaruga.h"
 		class Lebre {
 			int posicao;
 			public:
